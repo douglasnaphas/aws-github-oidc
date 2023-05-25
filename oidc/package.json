@@ -9,7 +9,8 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "account-check": "bash account-check.sh"
+    "account-check": "bash account-check.sh",
+    "deploy": "bash deploy.sh"
   },
   "devDependencies": {
     "@types/jest": "^29.2.5",
