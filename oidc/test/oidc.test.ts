@@ -4,7 +4,4 @@ import * as Oidc from "../lib/oidc-stack";
 
 test("Can instantiate", () => {
   const app = new cdk.App();
-  const stack = new Oidc.OidcStack(app, "MyTestStack", {
-    deployRoleName: "MyDeployRole",
-  });
-});
+  const stack = new Oidc.OidcStack(app, "MyTestStack");
