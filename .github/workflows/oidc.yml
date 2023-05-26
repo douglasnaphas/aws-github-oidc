@@ -3,27 +3,6 @@ concurrency: ci-${{ github.ref }}
 on:
   workflow_dispatch:
 jobs:
-  var-check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: See if vars are set
-        env:
-          AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
-          AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
-          EXPECTED_ACCOUNT_ID: ${{ vars.AWS_ACCOUNT_ID }}
-        run: |
-          echo "AWS_ACCESS_KEY_ID"
-          echo "${AWS_ACCESS_KEY_ID}"
-          echo "AWS_SECRET_ACCESS_KEY"
-          echo "${AWS_SECRET_ACCESS_KEY}" | wc
-          echo "AWS_SESSION_TOKEN"
-          echo "${AWS_SESSION_TOKEN}" | wc
-          echo "AWS_DEFAULT_REGION"
-          echo "${AWS_DEFAULT_REGION}"
-          echo "EXPECTED_ACCOUNT_ID"
-          echo "${EXPECTED_ACCOUNT_ID}"
   account-check:
     runs-on: ubuntu-latest
     steps:
