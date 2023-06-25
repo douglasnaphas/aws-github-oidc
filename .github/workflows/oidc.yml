@@ -37,6 +37,8 @@ jobs:
           EXPECTED_ACCOUNT_ID: ${{ github.event.inputs.expected_account_id }}
         working-directory: oidc
         run: |
+          echo "${AWS_ACCESS_KEY_ID}" | wc
+          echo "${AWS_SECRET_ACCESS_KEY}" | wc
           npm run account-check
   deploy-provider:
     runs-on: ubuntu-latest
