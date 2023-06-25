@@ -31,8 +31,8 @@ jobs:
       - name: Identify account and region
         env:
           AWS_ACCESS_KEY_ID: ${{ github.event.inputs.aws_access_key_id }}
-          AWS_SECRET_ACCESS_KEY: "::add-mask::${{ github.event.inputs.aws_secret_access_key }}"
-          AWS_SESSION_TOKEN: "::add-mask::${{ github.event.inputs.aws_session_token }}"
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
           AWS_DEFAULT_REGION: ${{ github.event.inputs.aws_default_region }}
           EXPECTED_ACCOUNT_ID: ${{ github.event.inputs.expected_account_id }}
         working-directory: oidc
