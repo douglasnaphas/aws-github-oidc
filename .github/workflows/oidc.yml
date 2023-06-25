@@ -14,17 +14,27 @@ on:
       expected_account_id:
         required: true
 jobs:
+  use_inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use the inputs
+        env:
+          SOME_INPUT: ${{ inputs.expected_account_id }}
+          SOME_GITHUB_EVENT_INPUT: ${{ github.event.inputs.expected_account_id }}
+        run: |
+          echo "the expected account id is ${SOME_INPUT}"
+          echo "it is also ${SOME_GITHUB_EVENT_INPUT}"
   account-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Identify account and region
         env:
-          AWS_ACCESS_KEY_ID: ${{ github.events.inputs.aws_access_key_id }}
-          AWS_SECRET_ACCESS_KEY: "::add-mask::${{ github.events.inputs.aws_secret_access_key }}"
-          AWS_SESSION_TOKEN: "::add-mask::${{ github.events.inputs.aws_session_token }}"
-          AWS_DEFAULT_REGION: ${{ github.events.inputs.aws_default_region }}
-          EXPECTED_ACCOUNT_ID: ${{ github.events.inputs.expected_account_id }}
+          AWS_ACCESS_KEY_ID: ${{ github.event.inputs.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: "::add-mask::${{ github.event.inputs.aws_secret_access_key }}"
+          AWS_SESSION_TOKEN: "::add-mask::${{ github.event.inputs.aws_session_token }}"
+          AWS_DEFAULT_REGION: ${{ github.event.inputs.aws_default_region }}
+          EXPECTED_ACCOUNT_ID: ${{ github.event.inputs.expected_account_id }}
         working-directory: oidc
         run: |
           npm run account-check
