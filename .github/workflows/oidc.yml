@@ -28,6 +28,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Mask secret inputs
+        run: |
+          echo "::add-mask::${{ github.event.inputs.aws_access_key_id}}"
+          echo "::add-mask::${{ github.event.inputs.aws_secret_access_key }}"
+          echo "::add-mask::${{ github.event.inputs.aws_session_token }}"
+          echo "::add-mask::${{ github.event.inputs.aws_default_region }}"
+          echo "::add-mask::${{ github.event.inputs.expected_account_id }}"
       - name: Identify account and region
         working-directory: oidc
         run: |
