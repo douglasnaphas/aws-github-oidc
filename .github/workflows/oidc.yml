@@ -35,7 +35,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY=${{ github.event.inputs.aws_secret_access_key }} \
           AWS_SESSION_TOKEN=${{ github.event.inputs.aws_session_token }} \
           AWS_DEFAULT_REGION=${{ github.event.inputs.aws_default_region }} \
-          EXPECTED_ACCOUNT=${{ github.event.inputs.expected_account_id }} \
+          EXPECTED_ACCOUNT_ID=${{ github.event.inputs.expected_account_id }} \
           npm run account-check
   deploy-provider:
     runs-on: ubuntu-latest
