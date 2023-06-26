@@ -31,7 +31,7 @@ jobs:
       - name: Identify account and region
         env:
           AWS_ACCESS_KEY_ID: ${{ github.event.inputs.aws_access_key_id }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY_ENV_VAR: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
           AWS_DEFAULT_REGION: ${{ github.event.inputs.aws_default_region }}
           EXPECTED_ACCOUNT_ID: ${{ github.event.inputs.expected_account_id }}
@@ -39,7 +39,7 @@ jobs:
         run: |
           echo "${AWS_ACCESS_KEY_ID}" | wc
           echo "${AWS_SECRET_ACCESS_KEY}" | wc
-          npm run account-check
+          INLINE_VAR=${{ github.event.inputs.expected_account_id }} npm run account-check
   deploy-provider:
     runs-on: ubuntu-latest
     needs: [account-check]

@@ -1,7 +1,6 @@
 #!/bin/bash
 echo "trying to say an input..."
-echo "${{ github.event.inputs.expected_account_id }}"
-echo "${{ inputs.expected_account_id }}"
+echo "INLINE_VAR: ${INLINE_VAR}"
 if [[ \
   -z "${AWS_ACCESS_KEY_ID}" || \
   -z "${AWS_SECRET_ACCESS_KEY}" || \
