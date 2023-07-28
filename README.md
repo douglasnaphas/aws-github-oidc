@@ -1,9 +1,3 @@
-# Just A Table
+# AWS GitHub OIDC
 
-This repo contains:
-  * A DynamoDB Table, codified using the [AWS Cloud Development Kit (CDK)](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-construct-library.html);
-  * CI code to deploy it to a test and prod account;
-  * CI code to deploy development instances of it to forks of this repo on development branches;
-  * Code to configure the CDK stack by reading [SSM parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html) from the accounts where it's deployed.
-
-It is meant to be used as a template for when you want some AWS resources, as code, with pre-built machinery for deployment and testing.
+An OpenID Connect (OIDC) Provider for GitHub. The Provider is a resource you need in your AWS account to establish authentication between GitHub Actions and AWS, so that you can deploy resources to AWS from GitHub Actions without saving long-lived credentials in your GitHub Actions Secrets.
