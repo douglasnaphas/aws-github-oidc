@@ -9,9 +9,11 @@ export const containsGitHubProvider = (
   const NEEDLE = "token.actions.githubusercontent.com";
   const providers = response.OpenIDConnectProviderList;
   for (let p = 0; p < providers.length; p++) {
-    if (oidcProviderArn2Url(providers[p].Arn || "") === NEEDLE) {
-      return true;
-    }
+    try {
+      if (oidcProviderArn2Url(providers[p].Arn || "") === NEEDLE) {
+        return true;
+      }
+    } catch (error) {}
   }
   return false;
 };
