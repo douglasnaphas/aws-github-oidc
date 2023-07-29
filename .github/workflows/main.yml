@@ -5,19 +5,47 @@ on:
     branches: [master, main]
   workflow_dispatch:
 jobs:
-  test-oidc:
+  test-oidc-aripalo:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Install
-        working-directory: oidc
+        working-directory: oidc-aripalo
         run: |
           npm install
       - name: Build
-        working-directory: oidc
+        working-directory: oidc-aripalo
         run: |
           npm run build
       - name: Test
-        working-directory: oidc
+        working-directory: oidc-aripalo
+        run: |
+          npm test
+  test-oidc-cfn-no-prints:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install
+        working-directory: oidc-cfn-no-prints
+        run: |
+          npm install
+      - name: Build
+        working-directory: oidc-cfn-no-prints
+        run: |
+          npm run build
+      - name: Test
+        working-directory: oidc-cfn-no-prints
+        run: |
+          npm test
+  test-tools:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install
+        working-directory: tools
+        run: |
+          npm install
+      - name: Test
+        working-directory: tools
         run: |
           npm test
