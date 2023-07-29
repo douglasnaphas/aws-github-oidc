@@ -1,0 +1,15 @@
+{
+  "name": "tools",
+  "version": "1.0.0",
+  "description": "Utilities for working with aws-github-oidc.",
+  "main": "index.ts",
+  "bin": "./index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Douglas Naphas <douglasnaphas@gmail.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "typescript": "^5.1.6"
+  }
+}
