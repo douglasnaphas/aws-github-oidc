@@ -10,6 +10,10 @@
   "author": "Douglas Naphas <douglasnaphas@gmail.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "@aws-sdk/client-iam": "^3.379.1",
     "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.5"
   }
 }
