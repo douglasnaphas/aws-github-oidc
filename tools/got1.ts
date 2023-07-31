@@ -21,5 +21,12 @@ import { containsGitHubProvider } from "./containsGitHubProvider";
       process.exit(ARBITRARY_NONZERO_STATUS);
     }
   }
-  console.log("response:\n", response);
+  const BAD_RESPONSE_EXIT_STATUS = 3;
+  if (!response) {
+    process.exit(BAD_RESPONSE_EXIT_STATUS);
+  }
+  if (containsGitHubProvider(response)) {
+    process.exit(0);
+  }
+  process.exit(1);
 })();
