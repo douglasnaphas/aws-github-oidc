@@ -17,13 +17,16 @@ import { containsGitHubProvider } from "./containsGitHubProvider";
       console.error(
         "expired token, try setting the variables AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_SESSION_TOKEN to valid credentials"
       );
-      const ARBITRARY_NONZERO_STATUS = 2;
-      process.exit(ARBITRARY_NONZERO_STATUS);
+      const EXPIRED_TOKEN = 2;
+      process.exit(EXPIRED_TOKEN);
     }
+    console.log("error listing OpenID Connect Providers");
+    const ERROR_LISTING_PROVIDERS = 4;
+    process.exit(ERROR_LISTING_PROVIDERS);
   }
-  const BAD_RESPONSE_EXIT_STATUS = 3;
+  const BAD_RESPONSE = 3;
   if (!response) {
-    process.exit(BAD_RESPONSE_EXIT_STATUS);
+    process.exit(BAD_RESPONSE);
   }
   if (containsGitHubProvider(response)) {
     process.exit(0);
