@@ -5,36 +5,36 @@ on:
     branches: ["*", "!main", "!master", "!skip/*"]
   workflow_dispatch:
 jobs:
-  test-oidc-aripalo:
+  test-provider-aripalo:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Install
-        working-directory: oidc-aripalo
+        working-directory: provider-aripalo
         run: |
           npm install
       - name: Build
-        working-directory: oidc-aripalo
+        working-directory: provider-aripalo
         run: |
           npm run build
       - name: Test
-        working-directory: oidc-aripalo
+        working-directory: provider-aripalo
         run: |
           npm test
-  test-oidc-cfn-no-prints:
+  test-provider-cfn:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Install
-        working-directory: oidc-cfn-no-prints
+        working-directory: provider-cfn
         run: |
           npm install
       - name: Build
-        working-directory: oidc-cfn-no-prints
+        working-directory: provider-cfn
         run: |
           npm run build
       - name: Test
-        working-directory: oidc-cfn-no-prints
+        working-directory: provider-cfn
         run: |
           npm test
   test-tools:
