@@ -1,3 +1,4 @@
+#!/usr/bin/env npx ts-node
 const ListOpenIDConnectProvidersResponse =
   require("@aws-sdk/client-iam").ListOpenIDConnectProvidersResponse;
 const oidcProviderArn2Url =
