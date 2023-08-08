@@ -42,10 +42,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install
-        working-directory: tools
         run: |
           npm install
       - name: Test
-        working-directory: tools
         run: |
           npm test

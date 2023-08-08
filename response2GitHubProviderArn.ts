@@ -1,9 +1,8 @@
 const ListOpenIDConnectProvidersResponse =
   require("@aws-sdk/client-iam").ListOpenIDConnectProvidersResponse;
-const oidcProviderArn2Url = require("./oidcProviderArn2Url").oidcProviderArn2Url;
-const response2GitHubProviderArn = (
-  response: typeof ListOpenIDConnectProvidersResponse
-) => {
+const oidcProviderArn2Url =
+  require("./oidcProviderArn2Url").oidcProviderArn2Url;
+module.exports = (response: typeof ListOpenIDConnectProvidersResponse) => {
   if (!response || !response.OpenIDConnectProviderList) {
     return null;
   }
@@ -18,4 +17,3 @@ const response2GitHubProviderArn = (
   }
   return null;
 };
-module.exports = response2GitHubProviderArn;
