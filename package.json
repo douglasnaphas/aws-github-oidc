@@ -1,0 +1,19 @@
+{
+  "name": "aws-github-oidc",
+  "version": "1.0.0",
+  "description": "Resources and tools for using OIDC for authentication between GitHub and AWS without saved credentials.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VerticalRelevance/aws-github-oidc.git"
+  },
+  "author": "Douglas Naphas <douglasnaphas@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/VerticalRelevance/aws-github-oidc/issues"
+  },
+  "homepage": "https://github.com/VerticalRelevance/aws-github-oidc#readme"
+}
