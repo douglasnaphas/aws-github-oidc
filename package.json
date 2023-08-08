@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Resources and tools for using OIDC for authentication between GitHub and AWS without saved credentials.",
   "main": "index.ts",
+  "files": ["./*.ts"],
   "scripts": {
     "test": "jest"
   },
