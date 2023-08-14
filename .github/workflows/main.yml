@@ -5,22 +5,6 @@ on:
     branches: [master, main]
   workflow_dispatch:
 jobs:
-  test-provider-aripalo:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install
-        working-directory: provider-aripalo
-        run: |
-          npm install
-      - name: Build
-        working-directory: provider-aripalo
-        run: |
-          npm run build
-      - name: Test
-        working-directory: provider-aripalo
-        run: |
-          npm test
   test-provider-cfn:
     runs-on: ubuntu-latest
     steps:
