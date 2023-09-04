@@ -10,15 +10,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install
-        working-directory: provider-cfn
+        working-directory: GitHubOIDCProvider
         run: |
           npm install
       - name: Build
-        working-directory: provider-cfn
+        working-directory: GitHubOIDCProvider
         run: |
           npm run build
       - name: Test
-        working-directory: provider-cfn
+        working-directory: GitHubOIDCProvider
         run: |
           npm test
   test-tools:
