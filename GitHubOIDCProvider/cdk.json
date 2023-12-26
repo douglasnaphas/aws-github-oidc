@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts bin/oidc-cfn-no-prints.ts",
+  "app": "npx ts-node --prefer-ts-exts bin/GitHubOIDCProvider.ts",
   "watch": {
     "include": [
       "**"

@@ -7,7 +7,7 @@ export class GitHubOIDCProviderStack extends cdk.Stack {
     super(scope, id, props);
     const gitHubOIDCProvider = new CfnOIDCProvider(this, "GitHubOIDCProvider", {
       url: "https://token.actions.githubusercontent.com",
-      thumbprintList: [],
+      thumbprintList: ["abcdef0123456890abcdef01234567890abcdef0"],
       clientIdList: ["sts.amazonaws.com"],
     });
   }
