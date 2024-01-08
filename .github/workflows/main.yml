@@ -12,15 +12,15 @@ jobs:
       - name: Install
         working-directory: GitHubOIDCProvider
         run: |
-          npm install
+          npx pnpm install
       - name: Build
         working-directory: GitHubOIDCProvider
         run: |
-          npm run build
+          npx pnpm run build
       - name: Test
         working-directory: GitHubOIDCProvider
         run: |
-          npm test
+          npx pnpm test
   test-tools:
     runs-on: ubuntu-latest
     steps:
