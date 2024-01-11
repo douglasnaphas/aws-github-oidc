@@ -21,6 +21,14 @@ jobs:
         working-directory: GitHubOIDCProvider
         run: |
           npx pnpm test
+      - name: itest
+        env:
+          AWS_ACCESS_KEY_ID: ${{ vars.PROVIDER_DEPLOYER_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.PROVIDER_DEPLOYER_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ vars.REGION }}
+        working-directory: GitHubOIDCProvider
+        run: |
+          npx pnpm deploy
   test-tools:
     runs-on: ubuntu-latest
     steps:
