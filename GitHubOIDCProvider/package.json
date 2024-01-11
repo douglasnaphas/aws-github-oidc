@@ -9,8 +9,8 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk", 
-    "deploy": "npx cdk deploy",
-    "destroy": "npx cdk destroy",
+    "cdk-deploy": "npx cdk deploy",
+    "cdk-destroy": "npx cdk destroy",
     "cdk-bootstrap": "npx cdk bootstrap"
   },
   "devDependencies": {
