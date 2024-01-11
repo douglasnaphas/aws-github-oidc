@@ -1,4 +1,5 @@
 from aws_cdk import (
+    Aws,
     # Duration,
     Stack,
     # aws_sqs as sqs,
@@ -16,6 +17,7 @@ class ProviderDeployerUserStack(Stack):
         ]:
             user.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name(p))
         user.add_to_policy(iam.PolicyStatement(
+            sid = "GrantAllOnGitHubOIDCProviders",
             resources = [
                 "arn:aws:iam::*:oidc-provider/token.actions.githubusercontent.com"
             ],
@@ -27,6 +29,24 @@ class ProviderDeployerUserStack(Stack):
                 "iam:RemoveClientIDFromOpenIDConnectProvider",
                 "iam:TagOpenIDConnectProvider",
                 "iam:TagOpenIDConnectProvider",
-                "iam:UpdateOpenIDConnectProviderThumbprint" 
+                "iam:UpdateOpenIDConnectProviderThumbprint"
+            ]
+        ))
+        user.add_to_policy(iam.PolicyStatement(
+            sid = "GetParamsForCDK",
+            resources = [
+                "*"
+            ],
+            actions = [
+                "ssm:GetParameter*"
+            ]
+        ))
+        user.add_to_policy(iam.PolicyStatement(
+            sid = "AssumeCDKRoles",
+            resources = [
+                "arn:aws:iam::" + Aws.ACCOUNT_ID + ":role/cdk*"
+            ],
+            actions = [
+                "sts:AssumeRole"
             ]
         ))
