@@ -30,8 +30,9 @@ jobs:
         working-directory: GitHubOIDCProvider
         run: |
           npx pnpm cdk-deploy
-          aws iam get-open-id-connect-provider --open-id-connect-provider-arn arn:aws:iam::111053244626:oidc-provider/token.actions.githubusercontent.com
+          aws iam get-open-id-connect-provider --open-id-connect-provider-arn arn:aws:iam::${AWS_ACCOUNT_ID}:oidc-provider/token.actions.githubusercontent.com
           # now use it
+          # deploy a role using the provider
 
   test-tools:
     runs-on: ubuntu-latest
