@@ -3,7 +3,8 @@ import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { ExampleAppStack } from '../lib/example_app-stack';
 import { GitHubOidcRoleStack } from "../../GitHubOIDCRoleStack/lib";
-import * as iam from 'aws-cdk-lib/aws-iam'
+import * as iam from 'aws-cdk-lib/aws-iam';
+const stackname = require("@cdk-turnkey/stackname");
 
 const app = new cdk.App();
 if (!process.env.GITHUB_REF) {
@@ -14,11 +15,14 @@ if (!process.env.GITHUB_REPOSITORY) {
   console.error("GITHUB_REPOSITORY is not set, it should be something like douglasnaphas/aws-github-oidc");
   process.exit(3);
 }
+const repository = process.env.GITHUB_REPOSITORY;
+const ref = process.env.GITHUB_REF;
+const STACKNAME_HASH_LENGTH = 6;
 new GitHubOidcRoleStack(app, 'GitHubOidcRoleStack', {
-  ref: process.env.GITHUB_REF,
-  repository: process.env.GITHUB_REPOSITORY,
+  ref,
+  repository,
   managedPolicyList: [iam.ManagedPolicy.fromAwsManagedPolicyName("IAMReadOnlyAccess")],
-  policyStatements: []
-
+  policyStatements: [],
+  roleName: stackname("github-oidc", { hash: STACKNAME_HASH_LENGTH })
 });
 new ExampleAppStack(app, "ExampleAppStack");
