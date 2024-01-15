@@ -2,20 +2,23 @@
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { ExampleAppStack } from '../lib/example_app-stack';
+import { GitHubOidcRoleStack } from "../../GitHubOIDCRoleStack/lib";
+import * as iam from 'aws-cdk-lib/aws-iam'
 
 const app = new cdk.App();
-new ExampleAppStack(app, 'ExampleAppStack', {
-  /* If you don't specify 'env', this stack will be environment-agnostic.
-   * Account/Region-dependent features and context lookups will not work,
-   * but a single synthesized template can be deployed anywhere. */
+if (!process.env.GITHUB_REF) {
+  console.error("GITHUB_REF is not set, it should be something like refs/heads/main");
+  process.exit(2);
+}
+if (!process.env.GITHUB_REPOSITORY) {
+  console.error("GITHUB_REPOSITORY is not set, it should be something like douglasnaphas/aws-github-oidc");
+  process.exit(3);
+}
+new GitHubOidcRoleStack(app, 'GitHubOidcRoleStack', {
+  ref: process.env.GITHUB_REF,
+  repository: process.env.GITHUB_REPOSITORY,
+  managedPolicyList: [iam.ManagedPolicy.fromAwsManagedPolicyName("IAMReadOnlyAccess")],
+  policyStatements: []
 
-  /* Uncomment the next line to specialize this stack for the AWS Account
-   * and Region that are implied by the current CLI configuration. */
-  // env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
-
-  /* Uncomment the next line if you know exactly what Account and Region you
-   * want to deploy the stack to. */
-  // env: { account: '123456789012', region: 'us-east-1' },
-
-  /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
+new ExampleAppStack(app, "ExampleAppStack");

@@ -33,7 +33,16 @@ jobs:
           aws iam get-open-id-connect-provider --open-id-connect-provider-arn arn:aws:iam::${AWS_ACCOUNT_ID}:oidc-provider/token.actions.githubusercontent.com
           # now use it
           # deploy a role using the provider
-
+      - name: deploy example role app
+        env:
+          AWS_ACCESS_KEY_ID: ${{ vars.PROVIDER_DEPLOYER_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.  PROVIDER_DEPLOYER_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ vars.REGION }}
+          AWS_ACCOUNT_ID: ${{ vars.AWS_ACCOUNT_ID }}
+        working-directory: ExampleRoleStack
+        run: |
+          npx pnpm cdk-deploy
+      # - name: configure AWS creds
   test-tools:
     runs-on: ubuntu-latest
     steps:
