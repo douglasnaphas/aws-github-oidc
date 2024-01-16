@@ -41,7 +41,7 @@ jobs:
           AWS_ACCOUNT_ID: ${{ vars.AWS_ACCOUNT_ID }}
         working-directory: ExampleApp
         run: |
-          npx pnpm cdk-deploy GitHubOidcRoleStack
+          npx pnpm deploy-role
       # - name: configure AWS creds
   test-tools:
     runs-on: ubuntu-latest
