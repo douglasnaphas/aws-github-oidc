@@ -9,7 +9,7 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "deploy-role": "npx cdk deploy GitHubOidcRoleStack"
+    "deploy-role": "npx cdk deploy --require-approval never GitHubOidcRoleStack"
   },
   "devDependencies": {
     "@types/jest": "^29.5.11",
