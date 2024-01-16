@@ -42,6 +42,7 @@ jobs:
         working-directory: ExampleApp
         run: |
           npm install
+          npm run build
           npm run deploy-role
       # - name: configure AWS creds
   test-tools:
