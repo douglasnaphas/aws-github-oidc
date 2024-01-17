@@ -48,6 +48,11 @@ jobs:
           npm install
           npm run deploy-role
       # - name: configure AWS creds
+      - name: Print hash of .git/HEAD
+        env:
+          HEAD_HASH: ${{ hashFiles('.git/HEAD') }}
+        run: |
+          echo "HEAD_HASH: ${HEAD_HASH}"
   test-tools:
     runs-on: ubuntu-latest
     steps:
