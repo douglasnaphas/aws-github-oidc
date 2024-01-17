@@ -54,6 +54,14 @@ jobs:
         run: |
           echo "HEAD_HASH: ${HEAD_HASH}"
           cat .git/HEAD
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: ${{ vars.TEST_ROLE_NAME }}
+          aws-region: us-east-1
+      - name: Identify AWS account
+        run: |
+          aws sts get-caller-identity
   test-tools:
     runs-on: ubuntu-latest
     steps:
