@@ -53,6 +53,7 @@ jobs:
           HEAD_HASH: ${{ hashFiles('.git/HEAD') }}
         run: |
           echo "HEAD_HASH: ${HEAD_HASH}"
+          cat .git/HEAD
   test-tools:
     runs-on: ubuntu-latest
     steps:
