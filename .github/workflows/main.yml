@@ -55,9 +55,9 @@ jobs:
           echo "HEAD_HASH: ${HEAD_HASH}"
           cat .git/HEAD
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ vars.TEST_ROLE_NAME }}
+          role-to-assume: ${{ vars.TEST_ROLE_ARN }}
           aws-region: us-east-1
       - name: Identify AWS account
         run: |
