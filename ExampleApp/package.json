@@ -21,7 +21,6 @@
     "typescript": "~5.3.3"
   },
   "dependencies": {
-    "@cdk-turnkey/stackname": "^2.1.0",
     "aws-cdk-lib": "2.121.1",
     "constructs": "^10.0.0",
     "source-map-support": "^0.5.21"
