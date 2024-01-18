@@ -4,7 +4,6 @@ import * as cdk from 'aws-cdk-lib';
 import { ExampleAppStack } from '../lib/example_app-stack';
 import { GitHubOidcRoleStack } from "../../GitHubOIDCRoleStack/lib";
 import * as iam from 'aws-cdk-lib/aws-iam';
-const stackname = require("@cdk-turnkey/stackname");
 
 const app = new cdk.App();
 if (!process.env.GITHUB_REF) {
@@ -17,12 +16,11 @@ if (!process.env.GITHUB_REPOSITORY) {
 }
 const repository = process.env.GITHUB_REPOSITORY;
 const ref = process.env.GITHUB_REF;
-const STACKNAME_HASH_LENGTH = 6;
 new GitHubOidcRoleStack(app, 'GitHubOidcRoleStack', {
   ref,
   repository,
   managedPolicyList: [iam.ManagedPolicy.fromAwsManagedPolicyName("IAMReadOnlyAccess")],
   policyStatements: [],
-  roleName: stackname("github-oidc", { hash: STACKNAME_HASH_LENGTH })
+  roleName: "aws-github-oidc-test"
 });
 new ExampleAppStack(app, "ExampleAppStack");
