@@ -34,8 +34,8 @@ jobs:
         run: |
           npx pnpm cdk-deploy
           aws iam get-open-id-connect-provider --open-id-connect-provider-arn arn:aws:iam::${AWS_ACCOUNT_ID}:oidc-provider/token.actions.githubusercontent.com
-          # now use it
-          # deploy a role using the provider
+      # now use it
+      # deploy a role using the provider
       - name: Install role construct
         working-directory: GitHubOIDCRoleStack
         run: |
