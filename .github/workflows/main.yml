@@ -50,13 +50,6 @@ jobs:
         run: |
           npm install
           npm run deploy-role
-      # - name: configure AWS creds
-      - name: Print hash of .git/HEAD
-        env:
-          HEAD_HASH: ${{ hashFiles('.git/HEAD') }}
-        run: |
-          echo "HEAD_HASH: ${HEAD_HASH}"
-          cat .git/HEAD
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
