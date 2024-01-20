@@ -1,9 +1,6 @@
 {
-  "name": "oidc-cfn-no-prints",
+  "name": "aws-github-oidc-provider",
   "version": "0.1.0",
-  "bin": {
-    "oidc-cfn-no-prints": "bin/oidc-cfn-no-prints.js"
-  },
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
