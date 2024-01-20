@@ -47,4 +47,4 @@ I use `GitHubOIDCRoleStack` once with `ref` set to my main branch name, often `m
 Save each role name, once deployed, to GitHub Actions variables as something like `PROD_ROLE` for the former and `DEV_ROLE` for the latter.
 
 ### (3) Use `configure-aws-credentials`
-GitHub Actions steps wanting to deploy to the prod, test, or other accounts deployed from the main branch will have to be preceded by a `configure-aws-credentials` step with `role-to-assume` set to `PROD_ROLE`. Those deploying to other branches should be preceded by a `configure-aws-credentials` step with `role-to-assume` set to `DEV_ROLE`.
+With `PROD_ROLE` and `DEV_ROLE` set as described above, GitHub Actions steps wanting to deploy to the prod, test, or other accounts deployed from the main branch will have to be preceded by a `configure-aws-credentials` step with `role-to-assume` set to `PROD_ROLE`. Those deploying from other branches should be preceded by a `configure-aws-credentials` step with `role-to-assume` set to `DEV_ROLE`.
