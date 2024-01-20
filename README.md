@@ -5,7 +5,7 @@ An OpenID Connect (OIDC) Provider for GitHub. The Provider is a resource you nee
 ## How to use this
 There are probably multiple ways to set up OIDC authentication between GitHub and AWS.
 
-My preferred way is to use this repo to (1) deploy one OIDC provider per AWS account, (2) deploy one role either per repo or per branch, and (3) use [configure-aws-credentials](https://github.com/aws-actions/configure-aws-credentials) with the deployed role as the `role-to-assume`.
+My preferred way is to use this repo to (1) deploy one OIDC provider per AWS account, (2) deploy roles using GitHubOIDCRoleStack, and (3) use [configure-aws-credentials](https://github.com/aws-actions/configure-aws-credentials) with the deployed role as the `role-to-assume`.
 
 (1) and (2) are done from the command line on your computer, not from GitHub Actions and not through automation. They are the initial one-off steps that you do to get up and running with automated deployments. They take the place of one-off steps like creating a user and saving its AWS access key ID and AWS secret access key in GitHub Actions Secrets that prevailed before the AWS GitHub OIDC integration.
 
@@ -38,9 +38,13 @@ This is using [single sign-on](https://docs.aws.amazon.com/cli/latest/userguide/
 npx pnpm cdk-deploy
 ```
 
-### (2) Deploy one role either per repo or per branch
+### (2) Deploy roles
 #### Steps
-In your repo, add a stack called something like `GitHubRole`.
+In your repo, add one or more stacks called something like `GitHubRole`.
+
+I use `GitHubOIDCRoleStack` once with `ref` set to my main branch name, often `main`, and once with `ref` set to `*`.
+
+Save each role name, once deployed, to GitHub Actions variables as something like `PROD_ROLE` for the former and `DEV_ROLE` for the latter.
 
 ### (3) Use `configure-aws-credentials`
-
+GitHub Actions steps wanting to deploy to the prod, test, or other accounts deployed from the main branch will have to be preceded by a `configure-aws-credentials` step with `role-to-assume` set to `PROD_ROLE`. Those deploying to other branches should be preceded by a `configure-aws-credentials` step with `role-to-assume` set to `DEV_ROLE`.
