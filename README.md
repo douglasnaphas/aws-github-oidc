@@ -41,3 +41,6 @@ npx pnpm cdk-deploy
 ### (2) Deploy one role either per repo or per branch
 #### Steps
 In your repo, add a stack called something like `GitHubRole`.
+
+### (3) Use `configure-aws-credentials`
+
