@@ -16,9 +16,13 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
+        working-directory: GitHubOIDCRoleStack
       - run: npm run build --if-present
+        working-directory: GitHubOIDCRoleStack
       - run: source pre-release.sh
+        working-directory: GitHubOIDCRoleStack
       - run: npm test
+        working-directory: GitHubOIDCRoleStack
 
   publish-npm:
     needs: build
@@ -30,7 +34,10 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
       - run: npm ci
+        working-directory: GitHubOIDCRoleStack
       - run: npm run build --if-present
+        working-directory: GitHubOIDCRoleStack
       - run: npm publish --access public
+        working-directory: GitHubOIDCRoleStack
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
