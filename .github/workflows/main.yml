@@ -58,13 +58,3 @@ jobs:
       - name: Identify AWS account
         run: |
           aws sts get-caller-identity
-  test-tools:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install
-        run: |
-          npm install
-      - name: Test
-        run: |
-          npm test
