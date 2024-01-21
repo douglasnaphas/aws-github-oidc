@@ -25,6 +25,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+          working-directory: GitHubOIDCRoleStack
       - name: Install
         working-directory: GitHubOIDCProvider
         run: npm install
