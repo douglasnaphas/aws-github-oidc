@@ -8,7 +8,7 @@ jobs:
   test-provider-cfn:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install
         working-directory: GitHubOIDCProvider
         run: |
@@ -24,7 +24,7 @@ jobs:
   test-tools:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install
         run: |
           npm install
