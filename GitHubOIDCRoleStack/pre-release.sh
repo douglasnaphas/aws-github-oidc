@@ -1,4 +1,3 @@
-echo "running pre-release"
 PACKAGE_JSON_VERSION=refs/tags/v$(cat package.json | jq --raw-output '.version')
 if [[ "${PACKAGE_JSON_VERSION}" != "${GITHUB_REF}" ]]
 then
