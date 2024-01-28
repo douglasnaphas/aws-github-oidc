@@ -33,3 +33,7 @@ jobs:
       - name: Test
         working-directory: GitHubOIDCProvider
         run: npm test
+      - run: |
+          ls
+          source pre-release.sh
+        working-directory: GitHubOIDCRoleStack
