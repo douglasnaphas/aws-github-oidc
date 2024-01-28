@@ -19,7 +19,9 @@ jobs:
         working-directory: GitHubOIDCRoleStack
       - run: npm run build --if-present
         working-directory: GitHubOIDCRoleStack
-      - run: source pre-release.sh
+      - run: |
+          ls
+          source pre-release.sh
         working-directory: GitHubOIDCRoleStack
       - run: npm test
         working-directory: GitHubOIDCRoleStack
