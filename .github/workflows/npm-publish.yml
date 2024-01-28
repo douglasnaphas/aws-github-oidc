@@ -12,16 +12,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: |
+          ls
+          source pre-release.sh
+        working-directory: GitHubOIDCRoleStack
       - uses: actions/setup-node@v4
         with:
           node-version: 20
       - run: npm ci
         working-directory: GitHubOIDCRoleStack
       - run: npm run build --if-present
-        working-directory: GitHubOIDCRoleStack
-      - run: |
-          ls
-          source pre-release.sh
         working-directory: GitHubOIDCRoleStack
       - run: npm test
         working-directory: GitHubOIDCRoleStack
