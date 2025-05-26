@@ -20,5 +20,9 @@
   "peerDependencies": {
     "aws-cdk-lib": "2",
     "constructs": "10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/douglasnaphas/aws-github-oidc.git"
   }
 }
